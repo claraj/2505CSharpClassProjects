@@ -21,6 +21,7 @@ namespace ToDoList
 
         private void btnAddTodoItem_Click(object sender, EventArgs e)
         {
+
             // Remove any spaces start and end of sstring
             string newItem = txtNewToDo.Text.Trim();
 
