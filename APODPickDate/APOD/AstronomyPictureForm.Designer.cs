@@ -1,6 +1,6 @@
 ﻿namespace APOD
 {
-    partial class Form1
+    partial class AstronomyPictureForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@
             this.lblCredits = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,12 +131,23 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Date";
             // 
-            // Form1
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(232, 264);
+            this.progressBar.MarqueeAnimationSpeed = 1000;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(315, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 9;
+            this.progressBar.Visible = false;
+            // 
+            // AstronomyPictureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(4)))), ((int)(((byte)(4)))));
             this.ClientSize = new System.Drawing.Size(806, 807);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblCredits);
@@ -146,7 +158,7 @@
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "AstronomyPictureForm";
             this.Text = "Astronomy Picture of the Day";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -166,6 +178,7 @@
         private System.Windows.Forms.Label lblCredits;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

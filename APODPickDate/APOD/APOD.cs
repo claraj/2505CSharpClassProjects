@@ -29,18 +29,26 @@ namespace APOD
 
                     Debug.WriteLine("Using URL " + url);
                     var responseString = client.DownloadString(url);
-                    APODResponse response = JsonSerializer.Deserialize<APODResponse>(responseString);
+
+                    var serializerOptions = new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    };
+
+                    APODResponse response = JsonSerializer.Deserialize<APODResponse>(responseString, serializerOptions);
 
                     if (imageSavePath == null)
                     {
                         imageSavePath = Path.Combine(Path.GetTempPath(), "apod.jpg");
                     }
-                    client.DownloadFile(response.url, imageSavePath);
-                    response.fileSavePath = imageSavePath;
+                    client.DownloadFile(response.ImageUrl, imageSavePath);
+                    response.FileSavePath = imageSavePath;
 
                     Debug.WriteLine(response);
+
                     errorMessage = null;
                     return response;
+
                 } catch (WebException we)
                 {
                     errorMessage = "Error fetching data from NASA because " + we.Message;

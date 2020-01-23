@@ -5,16 +5,18 @@ using System.Windows.Forms;
 
 namespace APOD
 {
-    public partial class Form1 : Form
+    public partial class AstronomyPictureForm : Form
     {
 
-        public Form1()
+        public AstronomyPictureForm()
         {
             InitializeComponent();
         }
 
         private void enableForm(Boolean enable)
         {
+            progressBar.Visible = !enable;
+            
             btnGetForDate.Enabled = enable;
             btnGetToday.Enabled = enable;
             txtDate.Enabled = enable;
@@ -57,14 +59,13 @@ namespace APOD
         {
             
             // todo threading issue, not clearing correctly
-            lblDate.Text = "";
-            lblDescription.Text = "";
-            lblTitle.Text = "";
-            lblCredits.Text = "";  
+            //lblDate.Text = "";
+            //lblDescription.Text = "";
+            //lblTitle.Text = "";
+            //lblCredits.Text = "";  
 
             // image does not go away either 
             pictureBox1?.Image?.Dispose();
-
 
         }
         private void loadResponseIntoForm(APODResponse apodResponse, string error)
@@ -75,21 +76,23 @@ namespace APOD
                 return;
             }
 
-            if (apodResponse.media_type.Equals("image"))
+            DateTime date = DateTime.Parse(apodResponse.Date);
+            string formattedDate = $"{date:D}";  // Example format "Saturday January 19, 2020"
+
+            if (apodResponse.MediaType.Equals("image"))
             {
-                lblCredits.Text = $"Credit: {apodResponse.copyright}";
+                lblCredits.Text = $"Credit: {apodResponse.Copyright}";
 
-                // Cpnvert date string into DateTime so it can be formatted 
-                DateTime date = DateTime.Parse(apodResponse.date);
-
-                lblDate.Text = $"{date:D}";  // Example formate "Saturday January 19,  2020"
-                lblDescription.Text = apodResponse.explanation;
-                pictureBox1.Image = Image.FromFile(apodResponse.fileSavePath);
-                lblTitle.Text = apodResponse.title;
+                // Convert date string into DateTime so it can be formatted 
+                
+                lblDate.Text = formattedDate;  
+                lblDescription.Text = apodResponse.Explanation;
+                pictureBox1.Image = Image.FromFile(apodResponse.FileSavePath);
+                lblTitle.Text = apodResponse.Title;
             }
             else
             {
-                MessageBox.Show("Not an image, sorry.");
+                MessageBox.Show($"The response for {date:D} is not an image, sorry.");
             }
         }
 
