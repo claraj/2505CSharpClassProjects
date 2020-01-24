@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picAstronomyPicture = new System.Windows.Forms.PictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.btnGetToday = new System.Windows.Forms.Button();
@@ -38,18 +38,19 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.apodBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.picAstronomyPicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picAstronomyPicture
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 114);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 426);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picAstronomyPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAstronomyPicture.Location = new System.Drawing.Point(12, 114);
+            this.picAstronomyPicture.Name = "picAstronomyPicture";
+            this.picAstronomyPicture.Size = new System.Drawing.Size(776, 426);
+            this.picAstronomyPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAstronomyPicture.TabIndex = 0;
+            this.picAstronomyPicture.TabStop = false;
             // 
             // lblDescription
             // 
@@ -133,13 +134,20 @@
             // 
             // progressBar
             // 
+            this.progressBar.ForeColor = System.Drawing.Color.Maroon;
             this.progressBar.Location = new System.Drawing.Point(232, 264);
-            this.progressBar.MarqueeAnimationSpeed = 1000;
+            this.progressBar.MarqueeAnimationSpeed = 40;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(315, 23);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 9;
             this.progressBar.Visible = false;
+            // 
+            // apodBackgroundWorker
+            // 
+            this.apodBackgroundWorker.WorkerSupportsCancellation = true;
+            this.apodBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.apodBackgroundWorker_DoWork);
+            this.apodBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.apodBackgroundWorker_RunWorkerCompleted);
             // 
             // AstronomyPictureForm
             // 
@@ -156,12 +164,12 @@
             this.Controls.Add(this.btnGetToday);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picAstronomyPicture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AstronomyPictureForm";
             this.Text = "Astronomy Picture of the Day";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAstronomyPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,7 +177,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picAstronomyPicture;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Button btnGetToday;
@@ -179,6 +187,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.ComponentModel.BackgroundWorker apodBackgroundWorker;
     }
 }
 
