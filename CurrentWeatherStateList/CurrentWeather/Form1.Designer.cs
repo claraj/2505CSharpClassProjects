@@ -106,6 +106,7 @@
             // 
             // cbxState
             // 
+            this.cbxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxState.FormattingEnabled = true;
             this.cbxState.Location = new System.Drawing.Point(387, 17);
             this.cbxState.Name = "cbxState";
