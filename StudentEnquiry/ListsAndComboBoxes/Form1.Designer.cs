@@ -46,6 +46,7 @@
             this.lstDegrees.Name = "lstDegrees";
             this.lstDegrees.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstDegrees.Size = new System.Drawing.Size(367, 100);
+            this.lstDegrees.Sorted = true;
             this.lstDegrees.TabIndex = 0;
             this.lstDegrees.SelectedIndexChanged += new System.EventHandler(this.lstDegrees_SelectedIndexChanged);
             // 
@@ -66,7 +67,7 @@
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.button1_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label2
             // 
@@ -103,7 +104,7 @@
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(367, 24);
             this.cbxDepartment.TabIndex = 9;
-            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxSemester_SelectedIndexChanged);
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxDepartment_SelectedIndexChanged);
             // 
             // lblDegreeCount
             // 
@@ -129,7 +130,7 @@
             this.Controls.Add(this.cbxHowDidYouHear);
             this.Controls.Add(this.lstDegrees);
             this.Name = "Form1";
-            this.Text = "College Inquiry";
+            this.Text = "Student Enquiry";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
