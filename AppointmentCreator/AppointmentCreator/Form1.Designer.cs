@@ -84,7 +84,6 @@
             this.rdoCorner.Name = "rdoCorner";
             this.rdoCorner.Size = new System.Drawing.Size(72, 21);
             this.rdoCorner.TabIndex = 1;
-            this.rdoCorner.Tag = "Corner";
             this.rdoCorner.Text = "Corner";
             this.rdoCorner.UseVisualStyleBackColor = true;
             // 
@@ -97,7 +96,6 @@
             this.rdoSingle.Size = new System.Drawing.Size(68, 21);
             this.rdoSingle.TabIndex = 0;
             this.rdoSingle.TabStop = true;
-            this.rdoSingle.Tag = "Single";
             this.rdoSingle.Text = "Single";
             this.rdoSingle.UseVisualStyleBackColor = true;
             // 
@@ -200,6 +198,7 @@
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnEstimate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 398);
