@@ -48,7 +48,9 @@ namespace AppointmentCreator
             // ask use if they are sure - that they want to discard their changes
             // if the user cancels closing the form, then prevent the form closing.
 
-            if (!saved)
+            bool userMadeChanges = Tag.ToString() != txtRequests.Text;
+
+            if (!saved && userMadeChanges)
             {
                 DialogResult closeResult = MessageBox.Show("Your changes are not saved, close anyway?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 
