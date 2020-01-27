@@ -77,7 +77,7 @@ namespace AppointmentCreator
                 price = 30;
             }
 
-            Debug.WriteLine(date + "" + DateTime.Today);
+            // If the Date property of the DateTime is Today, add $5
             if (date.Date == DateTime.Today)
             {
                 price += 5;
