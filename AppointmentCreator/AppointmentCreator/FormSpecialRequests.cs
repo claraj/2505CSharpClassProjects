@@ -32,10 +32,11 @@ namespace AppointmentCreator
             // Store the user's special requests in this form's Tag property
             // The form that created this form will be able to access the data
             Tag = txtRequests.Text;
-            DialogResult = DialogResult.OK;  
             saved = true;
+            DialogResult = DialogResult.OK;  
             Close();        // Initiate Form close process, to return control to form that opened this one
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -50,21 +51,23 @@ namespace AppointmentCreator
 
             bool userMadeChanges = Tag.ToString() != txtRequests.Text;
 
+            // If not saved, and user has made changes, confirm they do
+            // want to close this window and lose their changes
             if (!saved && userMadeChanges)
             {
-                DialogResult closeResult = MessageBox.Show("Your changes are not saved, close anyway?", "Unsaved Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult closeResult = MessageBox.Show("Your changes are not saved, close anyway?", 
+                    "Unsaved Changes", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning);
                 
-                if (closeResult == DialogResult.Yes)
+                if (closeResult == DialogResult.No)
                 {
-                    // Do nothing, let close event proceed
-                }
-                else
-                {
-                    e.Cancel = true;  // Prevent Form closing
+                    e.Cancel = true;  // Prevent form closing
                 }
             }
 
-            // If changes are saved, let close event proceed
+            // If changes are saved, or user has not made changes, 
+            // let close event proceed to close the form
         }
     }
 }

@@ -31,7 +31,7 @@ namespace AppointmentCreator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Configure earliest and latest dates possible in Date
+            // Configure earliest and latest dates possible in DateTimePicker
             // Earliest is today, latest in seven days time
             dteAppointmentDay.MinDate = DateTime.Today;
             dteAppointmentDay.MaxDate = DateTime.Today.AddDays(7);
@@ -41,6 +41,7 @@ namespace AppointmentCreator
         private void btnAddSpecialRequests_Click(object sender, EventArgs e)
         {
             frmSpecialRequests frmSpecialRequests = new frmSpecialRequests();
+            // Set the Tag to be the current text in txtSpecialRequests
             frmSpecialRequests.Tag = txtSpecialRequests.Text;
             DialogResult res = frmSpecialRequests.ShowDialog();
 
@@ -52,6 +53,7 @@ namespace AppointmentCreator
                 }
             }
         }
+
 
         private void btnGetEstimate_Click(object sender, EventArgs e)
         {
@@ -83,8 +85,7 @@ namespace AppointmentCreator
                 price += 5;
             }
 
-            txtPrice.Text = $"{price:c}";
-            
+            txtPrice.Text = $"{price:c}";       
         }
 
     }
