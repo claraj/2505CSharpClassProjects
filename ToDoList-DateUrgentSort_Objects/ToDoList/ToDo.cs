@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace ToDoList
 {
-    struct ToDo
+    class ToDo
     {
         public ToDo(string text, bool urgent)
         {
             Text = text;      // set the Text property
             Urgent = urgent;     // set the Urgent property
-            DateCreated = DateTime.Now;
         }
 
         // A Property, backed by the text field
@@ -21,8 +20,8 @@ namespace ToDoList
         // Another auto property, C# creates an urgent field
         public bool Urgent { get; set; }
 
-        // Auto property with an initial value
-        public DateTime DateCreated { get; set; } // = DateTime.Now;
+        // Auto property with initial value set
+        public DateTime DateCreated { get; set; } = DateTime.Now;  
 
         // A method that can be called for any ToDo object
         public override string ToString()
