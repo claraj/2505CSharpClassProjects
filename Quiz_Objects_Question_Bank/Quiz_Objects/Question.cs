@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Quiz_Objects
+{
+    class Question
+    {
+        // Constructor. Notice can use default parameters, similar to methods 
+        public Question(string questionText, string correctAnswer, List<String> wrongAnswers, int points = 1)
+        {
+            QuestionText = questionText;
+            CorrectAnswer = correctAnswer;
+            WrongAnswers = wrongAnswers;
+            Points = points;
+        }
+
+        // Implicit Properties 
+        public string UserAnswer { get; set; }
+        public string QuestionText { get; set; }
+        public string CorrectAnswer { get; set; }
+        public List<string> WrongAnswers { get; set; }
+        public int Points { get; set; }
+        public bool Scored { get; set; } = false;  // An iniitial value 
+
+        // Readonly Properties that computes reuturn value from other data in Question object 
+
+        public bool Correct
+        {
+            get
+            {
+                return UserAnswer == CorrectAnswer;
+            }
+        }
+
+        public List<string> AllAnswers
+        {
+            get
+            {
+                // Returns all the possible answers (correct and wrong) in a random order 
+
+                // Combine correct answer and wrong answer strings in a new List
+                List<string> allAnswers = new List<string>();
+                allAnswers.AddRange(WrongAnswers);
+                allAnswers.Add(CorrectAnswer);
+
+                // Create a random number generator 
+                Random random = new Random();
+
+                // Create a new empty list 
+                List<String> shuffledAnswers = new List<String>();
+
+                // Loop while there are answers to shuffle
+                while (allAnswers.Count > 0)
+                {
+                    // Pick a random index in allAnswers
+                    int index = random.Next(allAnswers.Count);
+
+                    // Remove item at the random index
+                    string answer = allAnswers[index];
+                    allAnswers.RemoveAt(index);
+
+                    // Pick a random index to insert the removed answer, into the shuffled list
+                    int insertIndex = random.Next(shuffledAnswers.Count);
+                    
+                    // And Insert answer in the index
+                    shuffledAnswers.Insert(insertIndex, answer);
+                }
+                return shuffledAnswers;
+            }
+        }
+    }
+}
