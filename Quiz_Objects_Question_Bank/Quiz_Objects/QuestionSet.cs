@@ -57,6 +57,7 @@ namespace Quiz_Objects
             get
             {
                 {
+                    // Return null if currentQuestionIndex is outside the range of the Questions list
                     return Questions.ElementAtOrDefault(currentQuestionIndex);
                 }
             }

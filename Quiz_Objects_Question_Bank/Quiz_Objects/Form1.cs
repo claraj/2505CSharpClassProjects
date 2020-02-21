@@ -15,10 +15,10 @@ namespace Quiz_Objects
     {
         // Collect the RadioButtons into a list to help select/deselect all, 
         // help and figure out which one the user has checked
-        List<RadioButton> QuizRadioButtons;  
+        private List<RadioButton> QuizRadioButtons;  
         
         // The question bank
-        QuestionSet QuizQuestionSet;
+        private QuestionSet QuizQuestionSet;
 
         public Form1()
         {
@@ -49,19 +49,19 @@ namespace Quiz_Objects
                     return;   // Ignore empty strings
                 }
 
-                // Set the user's name for this question set 
+                // Set the user's name for this quiz
                 QuizQuestionSet.UserName = userName;
 
                 // Disable the TextBox to preserve the user's name
                 txtUserName.Enabled = false;
 
-                // enable all of the RadioButton controls
+                // Enable all of the RadioButton controls
                 foreach (RadioButton rb in QuizRadioButtons)
                 {
                     rb.Enabled = true;
                 }
 
-                // enable the check answer button and focus on it
+                // Enable the check answer button and focus on it
                 btnCheckAnswer.Enabled = true;
                 btnCheckAnswer.Focus();
 
@@ -83,7 +83,6 @@ namespace Quiz_Objects
             List<string> Answers = question.AllAnswers;
 
             // Deselect all the radio buttons and clear the results 
-
             foreach (RadioButton rb in QuizRadioButtons)
             {
                 rb.Checked = false;
@@ -109,7 +108,6 @@ namespace Quiz_Objects
 
         private void btnCheckAnswer_Click(object sender, EventArgs e)
         {
- 
             string userAnswer = null;
 
             Question question = QuizQuestionSet.CurrentQuestion;
