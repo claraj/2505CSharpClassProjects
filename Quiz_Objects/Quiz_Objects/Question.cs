@@ -21,11 +21,13 @@ namespace Quiz_Objects
         public string CorrectAnswer { get; set; }
         public List<string> WrongAnswers { get; set; }
 
-        //Read only properties. These compute the return value from other properties in the Question
+        // Method. Can be called for a Question object
         public bool IsCorrect(String answer)
         {
             return answer == CorrectAnswer;
         }
+
+        // Property. This compute the return value from other properties in the Question
 
         public List<string> AllAnswers 
         {
