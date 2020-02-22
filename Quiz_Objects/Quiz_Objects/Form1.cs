@@ -12,10 +12,13 @@ namespace Quiz_Objects
 {
     public partial class Form1 : Form
     {
+        // Store all of the RadioButton in a list, to make it easier to figure out which one was checked, uncheck them all
+        private List<RadioButton> QuizRadioButtons; 
 
-        private List<RadioButton> QuizRadioButtons;
+        // All of the quiz questions 
         private List<Question> QuizQuestions;
 
+        // Keeps track of what question the app is currently asking, will be used to index QuizQuestions
         private int CurrentQuestionNumber;
 
         private int score = 0;
@@ -24,15 +27,17 @@ namespace Quiz_Objects
         {
             InitializeComponent();
 
+            // Add the four radio buttons to the list 
             QuizRadioButtons = new List<RadioButton> { radioButton1, radioButton2, radioButton3, radioButton4 };
 
+            // Example questions - feel free to make up your own 
             Question q1 = new Question("What is the fastest animal?", "Cheetah", new List<string> { "Sloth", "Snail", "Tortoise" });
             Question q2 = new Question("What color is an elephant?", "Gray", new List<string> { "Pink", "Green", "Purple" });
             Question q3 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" });
 
+            // Add quiz questions to a list 
             QuizQuestions = new List<Question> { q1, q2, q3 };
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayQuestion(0);
@@ -42,27 +47,31 @@ namespace Quiz_Objects
 
         private void DisplayQuestion(int questionIndex)
         {
+            // Look up the question, using questionIndex
             Question question = QuizQuestions[questionIndex];
 
-            List<string> Answers = question.AllAnswers;
+            // Read the Answers property to get all list of the answer choices 
+            List<string> answers = question.AllAnswers;
 
             // Deselect all the radio buttons
-            QuizRadioButtons.ForEach(b => b.Checked = false);
+            foreach (RadioButton rb in QuizRadioButtons)
+            {
+                rb.Checked = false;
+            }
+
+            // Set or reset the label result so it does not show result from previous question  
             lblResult.Text = "??";
 
-            // Check are list or RadioButtons and Questions are the same size? 
-            if (QuizRadioButtons.Count != question.AllAnswers.Count)
+            // Use the answers to set the text for each RadioButton 
+            for (int a = 0; a < answers.Count; a++)
             {
-                throw new Exception("Questions must have the same number of answers as radio buttons");
+                QuizRadioButtons[a].Text = answers[a];
             }
 
-            for (int a = 0; a < Answers.Count; a++)
-            {
-                QuizRadioButtons[a].Text = Answers[a];
-            }
-
+            // And display the question text
             lblQuestion.Text = question.QuestionText;
         }
+
 
         private void btnCheckAnswer_Click(object sender, EventArgs e)
         {
@@ -70,20 +79,20 @@ namespace Quiz_Objects
             // CurrentQuestionNumber is out of range for the QuizQuestions list
             Question currentQuestion = QuizQuestions.ElementAtOrDefault(CurrentQuestionNumber);
 
-            if (currentQuestion == null)   
+            if (currentQuestion == null)
             {
                 return;  // Do you think this is the best way to deal with no question?
             }
 
-            // Which RadioButton was selected?
+            // Which RadioButton was selected? The text of that radio button is the user's answer
             string userAnswer = null;
 
-            foreach(RadioButton rb in QuizRadioButtons)
+            foreach (RadioButton rb in QuizRadioButtons)
             {
-               if (rb.Checked == true)
-               {
-                   userAnswer = rb.Text;
-               }
+                if (rb.Checked == true)
+                {
+                    userAnswer = rb.Text;
+                }
             }
 
             if (userAnswer == null)
@@ -92,19 +101,17 @@ namespace Quiz_Objects
                 return;
             }
 
-            // Determine if the user's answer is the correct one.
-            // Inform user by updating lblResult
-            // Increase score if user is correct 
-            if (currentQuestion.IsCorrect(userAnswer) )
+            if (currentQuestion.IsCorrect(userAnswer)) // Determine if the user's answer is the correct one.
             {
                 lblResult.Text = "Correct!";
-                score++;
+                score++;    // Increase score
             }
             else
             {
                 lblResult.Text = $"Wrong. The correct answer is {currentQuestion.CorrectAnswer}";
             }
 
+            // Disable btnCheckAnswer, enable btnNext, focus on btnNext 
             btnCheckAnswer.Enabled = false;
             btnNext.Enabled = true;
             btnNext.Focus();
@@ -125,11 +132,13 @@ namespace Quiz_Objects
             else
             {
                 DisplayQuestion(CurrentQuestionNumber);
-                // Disable Next, enable Check Answer and focus
+                // Disable Next, enable Check Answer and focus on this button
                 btnNext.Enabled = false;
                 btnCheckAnswer.Enabled = true;
                 btnCheckAnswer.Focus();
             }
         }
+
+
     }
 }
