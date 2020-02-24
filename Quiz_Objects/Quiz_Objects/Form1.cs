@@ -12,7 +12,8 @@ namespace Quiz_Objects
 {
     public partial class Form1 : Form
     {
-        // Store all of the RadioButton in a list, to make it easier to figure out which one was checked, uncheck them all
+        // Store all of the RadioButton in a list, 
+        // to make it easier to figure out which one was checked, or to uncheck all
         private List<RadioButton> QuizRadioButtons; 
 
         // All of the quiz questions 
@@ -26,18 +27,27 @@ namespace Quiz_Objects
         public Form1()
         {
             InitializeComponent();
-
+        
             // Add the four radio buttons to the list 
             QuizRadioButtons = new List<RadioButton> { radioButton1, radioButton2, radioButton3, radioButton4 };
 
             // Example questions - feel free to make up your own 
-            Question q1 = new Question("What is the fastest animal?", "Cheetah", new List<string> { "Sloth", "Snail", "Tortoise" });
+
+            // Create new Question with variables 
+            string questionText = "What is the fastest animal?";
+            string questionAnswer = "Cheetah";
+            List<string> wrongAnswers = new List<string> { "Sloth", "Snail", "Tortoise" };
+            Question q1 = new Question(questionText, questionAnswer, wrongAnswers);
+
+            // Or create with literals 
             Question q2 = new Question("What color is an elephant?", "Gray", new List<string> { "Pink", "Green", "Purple" });
             Question q3 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" });
 
             // Add quiz questions to a list 
             QuizQuestions = new List<Question> { q1, q2, q3 };
         }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayQuestion(0);
@@ -75,14 +85,7 @@ namespace Quiz_Objects
 
         private void btnCheckAnswer_Click(object sender, EventArgs e)
         {
-            // What is the current question? ElementAtOrDefault Returns null if 
-            // CurrentQuestionNumber is out of range for the QuizQuestions list
-            Question currentQuestion = QuizQuestions.ElementAtOrDefault(CurrentQuestionNumber);
-
-            if (currentQuestion == null)
-            {
-                return;  // Do you think this is the best way to deal with no question?
-            }
+            Question currentQuestion = QuizQuestions[CurrentQuestionNumber];
 
             // Which RadioButton was selected? The text of that radio button is the user's answer
             string userAnswer = null;
@@ -122,14 +125,8 @@ namespace Quiz_Objects
             // Advance to next question
             CurrentQuestionNumber++;
 
-            if (CurrentQuestionNumber >= QuizQuestions.Count)
-            {
-                MessageBox.Show($"End of Quiz! Your score is {score}", "Quiz Over");
-                // Disable both buttons
-                btnNext.Enabled = false;
-                btnCheckAnswer.Enabled = false;
-            }
-            else
+            // Are there more question to show? 
+            if (CurrentQuestionNumber < QuizQuestions.Count)
             {
                 DisplayQuestion(CurrentQuestionNumber);
                 // Disable Next, enable Check Answer and focus on this button
@@ -137,8 +134,13 @@ namespace Quiz_Objects
                 btnCheckAnswer.Enabled = true;
                 btnCheckAnswer.Focus();
             }
+            else
+            {
+                MessageBox.Show($"End of Quiz! Your score is {score}", "Quiz Over");
+                // Disable both buttons
+                btnNext.Enabled = false;
+                btnCheckAnswer.Enabled = false;
+            }
         }
-
-
     }
 }

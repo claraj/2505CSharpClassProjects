@@ -16,13 +16,12 @@ namespace Quiz_Objects
             WrongAnswers = wrongAnswers;
         }
 
-        // Implicit Properties 
+        // Auto Properties 
         public string QuestionText { get; set; }
         public string CorrectAnswer { get; set; }
         public List<string> WrongAnswers { get; set; }
 
-        // Property. This computes the return value from other properties in the Question
-
+        // Read-only Property. This computes the return value from other properties in the Question
         public List<string> AllAnswers
         {
             get
