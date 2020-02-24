@@ -17,17 +17,17 @@ namespace Quiz_Objects
             Points = points;
         }
 
-        // Implicit Properties 
+        // Auto-Implemented Properties 
         public string UserAnswer { get; set; }
         public string QuestionText { get; set; }
         public string CorrectAnswer { get; set; }
         public List<string> WrongAnswers { get; set; }
         public int Points { get; set; }
-        public bool Scored { get; set; } = false;  // An iniitial value 
+        public bool Scored { get; set; } = false;  // An initial value 
 
-        // Readonly Properties that computes reuturn value from other data in Question object 
+        // Readonly Properties that computes return value from other data in Question object 
 
-        public bool Correct
+        public bool IsCorrect
         {
             get
             {

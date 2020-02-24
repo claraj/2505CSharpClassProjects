@@ -90,12 +90,6 @@ namespace Quiz_Objects
 
             lblResult.Text = "??";
 
-            // check are lists same size. Error if not - throw new exception. Programmer needs to fix situation.
-            if (QuizRadioButtons.Count != question.AllAnswers.Count)
-            {
-                throw new Exception("Questions must have the same number of answers as radio buttons");
-            }
-
             // Set question
             lblQuestion.Text = question.QuestionText;
 
@@ -111,6 +105,12 @@ namespace Quiz_Objects
             string userAnswer = null;
 
             Question question = QuizQuestionSet.CurrentQuestion;
+
+            if (question == null)
+            {
+                Debug.WriteLine("No more questions");
+                return;
+            }
 
             // Which radio button was selected?
             foreach (RadioButton rb in QuizRadioButtons) 
@@ -134,7 +134,7 @@ namespace Quiz_Objects
             QuizQuestionSet.ScoreCurrentQuestion();
 
             // Show "correct" or "wrong answer" message
-            if (question.Correct)
+            if (question.IsCorrect)
             {
                 lblResult.Text = "Correct!";
             }
@@ -143,7 +143,7 @@ namespace Quiz_Objects
                 lblResult.Text = $"Wrong. The correct answer is {question.CorrectAnswer}";
             }
 
-            // Disable Check answer button, enable the Next button and focus 
+            // Disable Check Answer button, enable the Next button and focus 
             btnCheckAnswer.Enabled = false;
             btnNext.Enabled = true;
             btnNext.Focus();
@@ -152,9 +152,9 @@ namespace Quiz_Objects
         private void btnNext_Click(object sender, EventArgs e)
         {
             // Has the user answered all of the questions? 
-            if (QuizQuestionSet.QuizOver) 
-            { 
-                // Display results, disable next and check answer buttons
+            if (QuizQuestionSet.QuizOver)
+            {
+                // Display results, disable Next and Check Answer buttons
                 ShowResults();
                 btnNext.Enabled = false;
                 btnCheckAnswer.Enabled = false;
@@ -162,12 +162,11 @@ namespace Quiz_Objects
             else
             {
                 DisplayNextQuestion();
+               // Disable Next button, enable Check Answer and focus
+                btnNext.Enabled = false;
+                btnCheckAnswer.Enabled = true;
+                btnCheckAnswer.Focus();
             }
-
-            // Disable next button, enable check answer and focus
-            btnNext.Enabled = false;
-            btnCheckAnswer.Enabled = true;
-            btnCheckAnswer.Focus();
         }
 
         private void ShowResults()
