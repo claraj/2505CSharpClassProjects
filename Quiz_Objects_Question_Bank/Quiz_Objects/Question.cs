@@ -25,7 +25,7 @@ namespace Quiz_Objects
         public int Points { get; set; }
         public bool Scored { get; set; } = false;  // An initial value 
 
-        // Readonly Properties that computes return value from other data in Question object 
+        // Readonly Properties that compute return value from other data in the Question object 
 
         public bool IsCorrect
         {

@@ -106,7 +106,7 @@ namespace Quiz_Objects
 
             Question question = QuizQuestionSet.CurrentQuestion;
 
-            if (question == null)
+            if (question == null)  // Take no action if there are no more questions 
             {
                 Debug.WriteLine("No more questions");
                 return;
