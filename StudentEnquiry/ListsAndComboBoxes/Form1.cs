@@ -94,23 +94,23 @@ namespace ListsAndComboBoxes
 
             this.Close(); 
         }
-        
 
+
+        /*   lstDegrees.ClearSelected();  // fires the selection changed event
+            // Otherwise, the number of degrees selected doesn't reset to 0
+         */
         private void cbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstDegrees.ClearSelected();  // fires the selection changed event
-            // Otherwise, the number of degrees selected doesn't reset to 0
-            
             lstDegrees.Items.Clear();
 
-            string semester = cbxDepartment.Text;
+            string department = cbxDepartment.Text;
 
-            if (semester != null)
+            if (department != null)
             {
                 // Fetch the Array of degrees from the SortedList, show in ListBox
                 // Remember the keys in the SortedList are the names of programs
                 // The value for each key, is an array of degrees for that program 
-                string[] degrees = programs[semester];
+                string[] degrees = programs[department];
                 lstDegrees.Items.AddRange(degrees);
             }
         }

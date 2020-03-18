@@ -1,6 +1,6 @@
-﻿namespace AppointmentCreator
+﻿namespace OrderForm
 {
-    partial class frmSpecialRequests
+    partial class FormSpecialRequests
     {
         /// <summary>
         /// Required designer variable.
@@ -30,50 +30,49 @@
         {
             this.txtRequests = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRequests
             // 
-            this.txtRequests.Location = new System.Drawing.Point(15, 12);
+            this.txtRequests.Location = new System.Drawing.Point(41, 24);
             this.txtRequests.Multiline = true;
             this.txtRequests.Name = "txtRequests";
-            this.txtRequests.Size = new System.Drawing.Size(433, 205);
+            this.txtRequests.Size = new System.Drawing.Size(447, 271);
             this.txtRequests.TabIndex = 0;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(15, 237);
+            this.btnSave.Location = new System.Drawing.Point(41, 327);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.Size = new System.Drawing.Size(75, 33);
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Location = new System.Drawing.Point(373, 237);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnClose.Location = new System.Drawing.Point(413, 327);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 33);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmSpecialRequests
+            // FormSpecialRequests
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 287);
-            this.Controls.Add(this.btnCancel);
+            this.ClientSize = new System.Drawing.Size(538, 391);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtRequests);
-            this.Name = "frmSpecialRequests";
-            this.Tag = "";
+            this.Name = "FormSpecialRequests";
             this.Text = "Special Requests";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSpecialRequests_Close);
-            this.Load += new System.EventHandler(this.frmSpecialRequests_Load);
+            this.Load += new System.EventHandler(this.FormSpecialRequests_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +82,6 @@
 
         private System.Windows.Forms.TextBox txtRequests;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnClose;
     }
 }

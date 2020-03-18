@@ -21,7 +21,9 @@ namespace BusExpense
         {
             double busFare = 2.0;
 
-            int trips;   
+            int trips = Int32.Parse(txtTrips.Text);     // error if not number
+            
+
 
             if (Int32.TryParse(txtTrips.Text, out trips))
             {

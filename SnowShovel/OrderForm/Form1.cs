@@ -2,28 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AppointmentCreator
+namespace OrderForm
 {
     public partial class Form1 : Form
     {
-
-        /*
-         Pricing structure:
-         
-            A single lot costs $20
-            A corner lot costs $30
-
-            Same-day service, add $5
-             
-        */
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -31,29 +20,30 @@ namespace AppointmentCreator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Configure earliest and latest dates possible in DateTimePicker
-            // Earliest is today, latest in seven days time
+            // Configur earliest and latest dates possible in DateTimePicker
+            // Earliest is today, latest in 7 days time
             dteAppointmentDay.MinDate = DateTime.Today;
             dteAppointmentDay.MaxDate = DateTime.Today.AddDays(7);
         }
 
-
         private void btnAddSpecialRequests_Click(object sender, EventArgs e)
         {
-            frmSpecialRequests frmSpecialRequests = new frmSpecialRequests();
-            // Set the Tag to be the current text in txtSpecialRequests
-            frmSpecialRequests.Tag = txtSpecialRequests.Text;
-            DialogResult res = frmSpecialRequests.ShowDialog();
-
-            if (res == DialogResult.OK)
+            // Create new FormSpecialRequests form
+            FormSpecialRequests frmSpecialRequests = new FormSpecialRequests();
+            // Set the Tag to the current text in lblSpecialRequests
+            frmSpecialRequests.Tag = lblSpecialRequests.Text;
+            // Show the FormSpecialRequests form as a dialog
+            DialogResult specialRequestsResults = frmSpecialRequests.ShowDialog();
+       
+            // This method won't continue until the user closes the special requests form
+            if (specialRequestsResults == DialogResult.OK)
             {
-                if (frmSpecialRequests.Tag is string specialReq)
+                if (frmSpecialRequests.Tag is string specialRequests)
                 {
-                    txtSpecialRequests.Text = specialReq;
+                    lblSpecialRequests.Text = specialRequests;
                 }
             }
         }
-
 
         private void btnGetEstimate_Click(object sender, EventArgs e)
         {
@@ -85,8 +75,7 @@ namespace AppointmentCreator
                 price += 5;
             }
 
-            txtPrice.Text = $"{price:c}";       
+            txtPrice.Text = $"{price:c}";
         }
-
     }
 }
