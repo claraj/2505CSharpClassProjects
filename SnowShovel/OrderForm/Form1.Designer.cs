@@ -39,10 +39,10 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.dteAppointmentDay = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdoSingle = new System.Windows.Forms.RadioButton();
-            this.rdoCorner = new System.Windows.Forms.RadioButton();
             this.lblSpecialRequests = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdoCorner = new System.Windows.Forms.RadioButton();
+            this.rdoSingle = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +88,7 @@
             this.btnAddSpecialRequests.Location = new System.Drawing.Point(444, 397);
             this.btnAddSpecialRequests.Name = "btnAddSpecialRequests";
             this.btnAddSpecialRequests.Size = new System.Drawing.Size(231, 41);
-            this.btnAddSpecialRequests.TabIndex = 5;
+            this.btnAddSpecialRequests.TabIndex = 4;
             this.btnAddSpecialRequests.Text = "Add Special Requests";
             this.btnAddSpecialRequests.UseVisualStyleBackColor = true;
             this.btnAddSpecialRequests.Click += new System.EventHandler(this.btnAddSpecialRequests_Click);
@@ -98,7 +98,7 @@
             this.btnGetEstimate.Location = new System.Drawing.Point(40, 476);
             this.btnGetEstimate.Name = "btnGetEstimate";
             this.btnGetEstimate.Size = new System.Drawing.Size(198, 38);
-            this.btnGetEstimate.TabIndex = 6;
+            this.btnGetEstimate.TabIndex = 5;
             this.btnGetEstimate.Text = "Get Estimate";
             this.btnGetEstimate.UseVisualStyleBackColor = true;
             this.btnGetEstimate.Click += new System.EventHandler(this.btnGetEstimate_Click);
@@ -108,14 +108,14 @@
             this.txtAddress.Location = new System.Drawing.Point(226, 67);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(449, 26);
-            this.txtAddress.TabIndex = 9;
+            this.txtAddress.TabIndex = 1;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(226, 18);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(449, 26);
-            this.txtName.TabIndex = 10;
+            this.txtName.TabIndex = 0;
             // 
             // txtPrice
             // 
@@ -123,14 +123,14 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(200, 26);
-            this.txtPrice.TabIndex = 11;
+            this.txtPrice.TabIndex = 6;
             // 
             // dteAppointmentDay
             // 
             this.dteAppointmentDay.Location = new System.Drawing.Point(226, 119);
             this.dteAppointmentDay.Name = "dteAppointmentDay";
             this.dteAppointmentDay.Size = new System.Drawing.Size(449, 26);
-            this.dteAppointmentDay.TabIndex = 12;
+            this.dteAppointmentDay.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -142,39 +142,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Special Requests";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rdoCorner);
-            this.groupBox2.Controls.Add(this.rdoSingle);
-            this.groupBox2.Location = new System.Drawing.Point(28, 185);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 166);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Type of Sidewalk";
-            // 
-            // rdoSingle
-            // 
-            this.rdoSingle.AutoSize = true;
-            this.rdoSingle.Location = new System.Drawing.Point(27, 45);
-            this.rdoSingle.Name = "rdoSingle";
-            this.rdoSingle.Size = new System.Drawing.Size(78, 24);
-            this.rdoSingle.TabIndex = 0;
-            this.rdoSingle.TabStop = true;
-            this.rdoSingle.Text = "Single";
-            this.rdoSingle.UseVisualStyleBackColor = true;
-            // 
-            // rdoCorner
-            // 
-            this.rdoCorner.AutoSize = true;
-            this.rdoCorner.Location = new System.Drawing.Point(27, 99);
-            this.rdoCorner.Name = "rdoCorner";
-            this.rdoCorner.Size = new System.Drawing.Size(82, 24);
-            this.rdoCorner.TabIndex = 1;
-            this.rdoCorner.TabStop = true;
-            this.rdoCorner.Text = "Corner";
-            this.rdoCorner.UseVisualStyleBackColor = true;
-            // 
             // lblSpecialRequests
             // 
             this.lblSpecialRequests.AutoEllipsis = true;
@@ -183,6 +150,39 @@
             this.lblSpecialRequests.Size = new System.Drawing.Size(253, 101);
             this.lblSpecialRequests.TabIndex = 2;
             this.lblSpecialRequests.Text = "No special requests entered";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdoCorner);
+            this.groupBox2.Controls.Add(this.rdoSingle);
+            this.groupBox2.Location = new System.Drawing.Point(28, 185);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(295, 166);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Type of Sidewalk";
+            // 
+            // rdoCorner
+            // 
+            this.rdoCorner.AutoSize = true;
+            this.rdoCorner.Location = new System.Drawing.Point(27, 99);
+            this.rdoCorner.Name = "rdoCorner";
+            this.rdoCorner.Size = new System.Drawing.Size(82, 24);
+            this.rdoCorner.TabIndex = 1;
+            this.rdoCorner.Text = "Corner";
+            this.rdoCorner.UseVisualStyleBackColor = true;
+            // 
+            // rdoSingle
+            // 
+            this.rdoSingle.AutoSize = true;
+            this.rdoSingle.Checked = true;
+            this.rdoSingle.Location = new System.Drawing.Point(27, 45);
+            this.rdoSingle.Name = "rdoSingle";
+            this.rdoSingle.Size = new System.Drawing.Size(78, 24);
+            this.rdoSingle.TabIndex = 0;
+            this.rdoSingle.TabStop = true;
+            this.rdoSingle.Text = "Single";
+            this.rdoSingle.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
