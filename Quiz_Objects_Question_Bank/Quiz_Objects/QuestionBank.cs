@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Quiz_Objects
 {
-    class QuestionSet
+    class QuestionBank
     {
         // Fields - only used internally by a QuestionSet object
         private int currentQuestionIndex = -1;

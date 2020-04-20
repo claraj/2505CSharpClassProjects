@@ -18,7 +18,7 @@ namespace Quiz_Objects
         private List<RadioButton> QuizRadioButtons;  
         
         // The question bank
-        private QuestionSet QuizQuestionSet;
+        private QuestionBank QuizQuestionSet;
 
         public Form1()
         {
@@ -27,11 +27,11 @@ namespace Quiz_Objects
             QuizRadioButtons = new List<RadioButton> { radioButton1, radioButton2, radioButton3, radioButton4 };
             
             // Configure QuestionSet with example questions. Use your own questions if prefered.
-            QuizQuestionSet = new QuestionSet();
+            QuizQuestionSet = new QuestionBank();
 
-            Question q1 = new Question("What is the fastest animal?", "Cheetah", new List<string> { "Sloth", "Snail", "Tortoise" });
-            Question q2 = new Question("What color is an elephant?", "Gray", new List<string> { "Pink", "Green", "Purple" });
-            Question q3 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" });
+            Question q1 = new Question("What is the fastest animal?", "Cheetah", new List<string> { "Sloth", "Snail", "Tortoise" }, 1);
+            Question q2 = new Question("What color is an elephant?", "Gray", new List<string> { "Pink", "Green", "Purple" }, 10);
+            Question q3 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" }, 5);
 
             QuizQuestionSet.Questions.Add(q1);
             QuizQuestionSet.Questions.Add(q2);
@@ -91,7 +91,7 @@ namespace Quiz_Objects
             lblResult.Text = "??";
 
             // Set question
-            lblQuestion.Text = question.QuestionText;
+            lblQuestion.Text = question.QuestionText + $" ({question.Points} points)";
 
             // Set each radio button Text to one of the Question's answers  
             for (int a = 0; a < Answers.Count; a++)

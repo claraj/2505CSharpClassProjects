@@ -183,7 +183,7 @@
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblQuestion);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Quiz";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
